@@ -31,36 +31,44 @@ void print(T arr)
         cout << x << " ";
     // line;
 }
-const ll N = 2e5 + 7, MOD = 1e9 + 7, LOG = 20;
+const ll N = 1e6 + 7, MOD = 1e9 + 7, LOG = 20;
 // bool ok = false;
 // 1e7 -> 1s
 
-bool canPlace(int d){
-
-}
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    v.resize(n);
-    read(v);
-    ll l = 1 , r = 1e8;
-    while(l < r){
-        ll mid = (l + r) / 2;
-        if (canPlace(mid)){
-            l = mid;
+    int n, t;
+    cin >> n >> t;
+    vll a(n), b(n);
+    read(a), read(b);
+    int l = 0, r = 0;
+    int score = 0, mx = 0, curr_time = 0, start , end = 0;
+    for (;r < n;)
+    {
+        if (curr_time + a[r] <= t){
+            curr_time += a[r];
+            score += b[r];
+
+            if (score > mx){
+                mx = score;
+                start = l;
+                end = r;
+            }
+            r++;
         }
-        else{
-            r = mid;
+        else {
+            curr_time -= a[l];
+            score -= b[l++];
         }
     }
-    cout << l << el;
+    cout << ++start << " " << ++end << el;
 }
 
 int main()
 {
     FUSION
+
     ll TESTS = 1;
     // cin >> TESTS;
     // cout << "====== SOLUTIONS ======\n";
