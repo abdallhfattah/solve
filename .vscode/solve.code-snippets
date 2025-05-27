@@ -1,0 +1,192 @@
+{
+	// Place your solve workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Longest Common Subsequence": {
+		"scope": "cpp",
+		"prefix": "lcs",
+		"body": [
+			"int lcs(const string &a, const string &b) {",
+			"    int m = a.size();",
+			"    int n = b.size();",
+			"    vector<vll> dp(m + 1, vll(n + 1, 0));",
+			"",
+			"    for (int i = 1; i <= m; i++) {",
+			"        for (int j = 1; j <= n; j++) {",
+			"            if (a[i - 1] == b[j - 1]) {",
+			"                dp[i][j] = dp[i - 1][j - 1] + 1;",
+			"            } else {",
+			"                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);",
+			"            }",
+			"        }",
+			"    }",
+			"",
+			"   // Optional: for debugging, you can print the dp table",
+			"   for (auto &c : dp) print(c);",
+			"",
+			"   return dp[m][n];",
+			"}"
+		],
+		"description": "Calculates the Longest Common Subsequence (LCS) of two strings."
+	},
+	"solve": {
+		"scope": "cpp",
+		"prefix": "solve",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"typedef long long ll;",
+			"#define FUSION ios_base::sync_with_stdio(false), cin.tie(nullptr);",
+			"#define ld long double",
+			"",
+			"#define vi vector<int>",
+			"#define vll vector<ll>",
+			"#define pll pair<ll, ll>",
+			"#define vpll vector<pll>",
+			"#define INF LLONG_MAX",
+			"",
+			"// methods",
+			"#define all(item) item.begin(), item.end()",
+			"#define rall(item) item.rbegin(), item.rend()",
+			"#define mem(a, x) memset(a, x, sizeof(a))",
+			"",
+			"// prints",
+			"#define NO \"NO\\n\"",
+			"#define YES \"YES\\n\"",
+			"#define no cout << NO",
+			"#define yes cout << YES",
+			"#define yn (ok ? yes : no)",
+			"#define el '\\n'",
+			"#define wrong cout << \"-1\\n\"",
+			"#define line cout << \"\\n\"",
+			"",
+			"template <typename T>",
+			"void read(vector<T> &args)",
+			"{",
+			"  for (auto &x : args)",
+			"    cin >> x;",
+			"}",
+			"template <typename T>",
+			"void print(T arr)",
+			"{",
+			"  for (auto &x : arr)",
+			"    cout << x << \" \";",
+			"  line;",
+			"}",
+			"const ll N = 1e6 + 5, MOD = 1e9 + 7, LOG = 20;",
+			"// DP[N];",
+			"// bool ok = false;",
+			"// 1e7 -> 1s",
+			"",
+			"void solve()",
+			"{",
+			"",
+			"}",
+			"",
+			"int main()",
+			"{",
+			"  FUSION",
+			"// freopen(\"input.txt\", \"r\", stdin);",
+			"// freopen(\"output.txt\", \"w\", stdout);",
+			"  ll TESTS = 1;",
+			"  cin >> TESTS;",
+			"  // cout << \"====== SOLUTIONS ======\\n\";",
+			"  while (TESTS--)",
+			"    solve();",
+			"  return 0;",
+			"}"
+		],
+		"description": "Basic C++ template with solve function and main method."
+	},
+	// Math 
+	"Least Common Multiple": {
+		"scope": "cpp",
+		"prefix": "lcm",
+		"body": [
+			"ll lcm(ll a, ll b) {",
+			"  return a * b / __gcd(a, b);",
+			"}"
+		]
+	},
+	"Sieve of Eratosthenes": {
+  "scope": "cpp",
+  "prefix": "sieve",
+  "body": [
+    "vector<bool> sieve(ll n) {",
+    "  vector<bool> is_prime(n + 1, true);",
+    "  is_prime[0] = is_prime[1] = false;",
+    "",
+    "  for (ll i = 2; i * i <= n; ++i) {",
+    "    if (is_prime[i]) {",
+    "      for (ll j = i * i; j <= n; j += i) {",
+    "        is_prime[j] = false;",
+    "      }",
+    "    }",
+    "  }",
+    "  return is_prime;",
+    "}"
+  ],
+  "description": "Sieve of Eratosthenes to generate all prime numbers up to n."
+},
+"Divisors": {
+  "scope": "cpp",
+  "prefix": "divisors",
+  "body": [
+    "vector<int> get_divisors(int n) {",
+    "  vector<int> divisors;",
+    "  for (int i = 1; i * i <= n; i++) {",
+    "    if (n % i == 0) {",
+    "      divisors.emplace_back(i);",
+    "      if (n / i != i)",
+    "        divisors.emplace_back(n / i);",
+    "    }",
+    "  }",
+    "  // sort(all(divisors));",
+    "  return divisors;",
+    "}"
+  ]
+},
+"Get Prime Factors": {
+  "scope": "cpp",
+  "prefix": "factors",
+  "body": [
+    "vector<int> factorize(int n) {",
+    "  vector<int> factor;",
+    "  for (int i = 2; i * i <= n; i++) {",
+    "    while (n % i == 0) {",
+    "      factor.emplace_back(i), n /= i;",
+    "    }",
+    "  }",
+    "  if (n >= 1) factor.emplace_back(n);",
+    "  return factor;",
+    "}"
+  ]
+},
+"Get Power of Prime in Factorial": {
+  "scope": "cpp",
+  "prefix": "getpower",
+  "body": [
+    "int getPower(ll n, ll p) {",
+    "  int ret = 0;",
+    "  while (n)",
+    "    ret += n /= p;",
+    "  return ret;",
+    "}"
+  ]
+}
+
+
+}
